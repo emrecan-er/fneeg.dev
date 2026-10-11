@@ -336,9 +336,13 @@ h2 em{color:var(--muted)}
 .guide-card.swyper{--accent:#E74A3B;--glow:rgba(231,74,59,.21)}
 .guide-card.birthday{--accent:#98C29E;--glow:rgba(152,194,158,.21)}
 .guide-card.tagshot{--accent:#8B7CFF;--glow:rgba(139,124,255,.2)}
+.guide-card.siri{--accent:#B9A8FF;--glow:rgba(185,168,255,.22)}
+.guide-card.camera{--accent:#F6B779;--glow:rgba(246,183,121,.2)}
+.guide-card.family{--accent:#86D9C3;--glow:rgba(134,217,195,.2)}
 .guide-card .guide-meta{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .guide-card .guide-meta b{font-size:22px;color:var(--ink);font-weight:400;line-height:1}
 .guide-card img{width:68px;height:68px;margin:33px 0 20px;border-radius:17px}
+.guide-card .topic-icon{display:grid;place-items:center;width:68px;height:68px;margin:33px 0 20px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:17px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 30%,#10121A),#10121A);color:var(--accent);font-family:Georgia,serif;font-size:40px;line-height:1}
 .guide-card h3{font-size:clamp(23px,2.3vw,29px);line-height:1.18;letter-spacing:-.035em}
 .guide-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6}
 .guide-card .guide-read{margin-top:auto;padding-top:24px;color:var(--ink);font-size:13px;font-weight:600}
@@ -645,11 +649,11 @@ footer a:hover{color:var(--ink)}
 <!-- ============ GUIDES ============ -->
 <section class="sec guides-section" id="guides">
   <div class="wrap">
-    <div class="head rv"><div><span class="kicker">From the studio</span><h2>Small guides, <em>useful ideas.</em></h2></div><p>Practical ways to make your photos, screenshots, and important dates easier to manage.</p></div>
+    <div class="head rv"><div><span class="kicker">From the studio</span><h2>Small guides, <em>useful ideas.</em></h2></div><p>New iPhone features, explained for real life. Explore more on the <a href="/blog/" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px">blog</a>.</p></div>
     <div class="guide-grid">
-      <a class="guide-card swyper rv" href="/blog/clean-up-iphone-photos/"><span class="guide-meta">Photos <b aria-hidden="true">↗</b></span><img src="/assets/swyper-icon.png" alt="" loading="lazy"><h3>Clean up your iPhone photos without losing the keepers</h3><p>A calm routine for sorting the camera roll and reviewing before you delete.</p><span class="guide-read">Read the guide →</span></a>
-      <a class="guide-card birthday rv" href="/blog/never-miss-a-birthday/"><span class="guide-meta">Birthdays <b aria-hidden="true">↗</b></span><img src="/assets/savethedate-icon.png" alt="" loading="lazy"><h3>A birthday reminder system that feels personal</h3><p>Keep the dates and details that make it easy to show up for someone.</p><span class="guide-read">Read the guide →</span></a>
-      <a class="guide-card tagshot rv" href="/blog/find-iphone-screenshots/"><span class="guide-meta">Screenshots <b aria-hidden="true">↗</b></span><img src="/assets/tagshot-icon.png" alt="" loading="lazy"><h3>Find an iPhone screenshot when you need it</h3><p>Search the words inside saved images and use labels you will remember.</p><span class="guide-read">Read the guide →</span></a>
+      <a class="guide-card siri rv" href="/blog/siri-ai-ios-27/"><span class="guide-meta">iOS 27 <b aria-hidden="true">↗</b></span><span class="topic-icon" aria-hidden="true">✳</span><h3>Siri AI in iOS 27: what is new and who can use it</h3><p>What it can do, and the device, language, and region limits to check.</p><span class="guide-read">Read the guide →</span></a>
+      <a class="guide-card camera rv" href="/blog/iphone-18-pro-variable-aperture/"><span class="guide-meta">iPhone 18 Pro <b aria-hidden="true">↗</b></span><span class="topic-icon" aria-hidden="true">◎</span><h3>Variable aperture, explained without camera jargon</h3><p>A practical look at the new camera control for everyday photos.</p><span class="guide-read">Read the guide →</span></a>
+      <a class="guide-card family rv" href="/blog/ios-27-screen-time/"><span class="guide-meta">Family tech <b aria-hidden="true">↗</b></span><span class="topic-icon" aria-hidden="true">◇</span><h3>What changed in iOS 27 Screen Time?</h3><p>Ask to Browse, Time Allowances, and a calm way to start.</p><span class="guide-read">Read the guide →</span></a>
     </div>
   </div>
 </section>

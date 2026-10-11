@@ -33,10 +33,17 @@ h1 em,h2 em{font-family:Serif,Georgia,serif;font-style:italic;font-weight:400;le
 .post-card.swyper{--accent:#E74A3B;--glow:rgba(231,74,59,.25)}
 .post-card.birthday{--accent:#98C29E;--glow:rgba(152,194,158,.23)}
 .post-card.tagshot{--accent:#8B7CFF;--glow:rgba(139,124,255,.24)}
+.post-card.siri{--accent:#B9A8FF;--glow:rgba(185,168,255,.26)}
+.post-card.camera{--accent:#F6B779;--glow:rgba(246,183,121,.22)}
+.post-card.family{--accent:#86D9C3;--glow:rgba(134,217,195,.2)}
 .post-card .top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .post-card .arrow{font-size:26px;line-height:1;transition:transform .3s}
 .post-card:hover .arrow{transform:translate(4px,-4px)}
 .post-card .icon{width:76px;height:76px;margin:38px 0 22px;border-radius:20px;box-shadow:0 15px 30px rgba(0,0,0,.25)}
+.post-card .topic-icon{display:grid;place-items:center;width:76px;height:76px;margin:38px 0 22px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:20px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 30%,#10121A),#10121A);color:var(--accent);font-family:Georgia,serif;font-size:44px;line-height:1;box-shadow:0 15px 30px rgba(0,0,0,.25)}
+.blog-group-title{margin:35px 0 0;font-size:clamp(23px,3vw,34px);letter-spacing:-.04em}
+.blog-group-title+.post-grid{padding-top:22px;padding-bottom:55px}
+.blog-group-title+.post-grid:last-child{padding-bottom:130px}
 .post-card h2{font-size:clamp(24px,2.35vw,32px);line-height:1.15;letter-spacing:-.045em;margin-bottom:12px}
 .post-card p{color:var(--muted);font-size:14px;line-height:1.65}
 .post-card .read{margin-top:auto;padding-top:20px;color:var(--ink);font-size:13px;font-weight:600}
