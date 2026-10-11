@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>fneeg — tiny iOS apps, carefully made</title>
 <meta name="description" content="fneeg is the indie iOS studio of Emrecan Er. Swyper cleans up your camera roll, savethedate remembers birthdays, and more apps are on the way.">
+<link rel="canonical" href="https://fneeg.dev/">
 <meta name="theme-color" content="#07080C">
 <meta name="color-scheme" content="dark">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -12,6 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="fneeg — tiny iOS apps, carefully made">
 <meta property="og:description" content="Swyper, savethedate and more. Indie iOS apps by Emrecan Er.">
+<meta property="og:url" content="https://fneeg.dev/">
 <meta property="og:image" content="https://fneeg.dev/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/lexend-bold.woff2" as="font" type="font/woff2" crossorigin>
@@ -326,6 +328,21 @@ h2 em{color:var(--muted)}
 .client-bottom .i{transition:transform .3s var(--ease)}
 .client-card:hover .client-bottom .i{transform:translateX(5px)}
 
+/* guides */
+.guides-section{padding-top:clamp(100px,12vw,155px);padding-bottom:clamp(100px,12vw,155px);border-top:1px solid var(--line)}
+.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.guide-card{position:relative;display:flex;flex-direction:column;min-height:350px;padding:27px;border:1px solid var(--line-2);border-radius:28px;background:radial-gradient(100% 90% at 95% 100%,var(--glow),transparent 70%),var(--bg-2);transition:border-color .3s,box-shadow .3s,translate .3s}
+.guide-card:hover,.guide-card:focus-visible{border-color:var(--accent);box-shadow:0 25px 65px -42px var(--glow);translate:0 -5px}
+.guide-card.swyper{--accent:#E74A3B;--glow:rgba(231,74,59,.21)}
+.guide-card.birthday{--accent:#98C29E;--glow:rgba(152,194,158,.21)}
+.guide-card.tagshot{--accent:#8B7CFF;--glow:rgba(139,124,255,.2)}
+.guide-card .guide-meta{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.guide-card .guide-meta b{font-size:22px;color:var(--ink);font-weight:400;line-height:1}
+.guide-card img{width:68px;height:68px;margin:33px 0 20px;border-radius:17px}
+.guide-card h3{font-size:clamp(23px,2.3vw,29px);line-height:1.18;letter-spacing:-.035em}
+.guide-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6}
+.guide-card .guide-read{margin-top:auto;padding-top:24px;color:var(--ink);font-size:13px;font-weight:600}
+
 footer{border-top:1px solid var(--line);padding:40px 0 calc(40px + env(safe-area-inset-bottom));color:var(--faint);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
 footer nav{display:flex;gap:22px;flex-wrap:wrap}
@@ -339,11 +356,14 @@ footer a:hover{color:var(--ink)}
 
 @media (max-width:900px){
   .live,.soon-grid,.client-grid{grid-template-columns:1fr}
+  .guide-grid{grid-template-columns:1fr 1fr}
   .card{min-height:600px;padding:28px}
   .about-lead,.experience-grid{grid-template-columns:1fr;gap:30px}
   .exp-side{grid-template-columns:1fr 1fr;grid-template-rows:auto}
 }
 @media (max-width:520px){
+  .guide-grid{grid-template-columns:1fr}
+  .guide-card{min-height:320px}
   .card{min-height:640px;padding:24px;border-radius:28px}
   .c-swy .phone{right:50%;margin-right:-118px;bottom:-110px;transform:rotate(4deg)}
   .c-swy .float{right:auto;left:20px;bottom:250px}
@@ -396,6 +416,7 @@ footer a:hover{color:var(--ink)}
       <a href="#apps">Apps</a>
       <a href="#more">More apps</a>
       <a href="#about">About</a>
+      <a href="/blog/">Guides</a>
     </nav>
     <a class="navbtn" href="https://apps.apple.com/developer/emrecan-er/id1787888653" target="_blank" rel="noopener"><svg class="i if"><use href="#apple"/></svg>App Store</a>
   </div>
@@ -621,6 +642,18 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
+<!-- ============ GUIDES ============ -->
+<section class="sec guides-section" id="guides">
+  <div class="wrap">
+    <div class="head rv"><div><span class="kicker">From the studio</span><h2>Small guides, <em>useful ideas.</em></h2></div><p>Practical ways to make your photos, screenshots, and important dates easier to manage.</p></div>
+    <div class="guide-grid">
+      <a class="guide-card swyper rv" href="/blog/clean-up-iphone-photos/"><span class="guide-meta">Photos <b aria-hidden="true">↗</b></span><img src="/assets/swyper-icon.png" alt="" loading="lazy"><h3>Clean up your iPhone photos without losing the keepers</h3><p>A calm routine for sorting the camera roll and reviewing before you delete.</p><span class="guide-read">Read the guide →</span></a>
+      <a class="guide-card birthday rv" href="/blog/never-miss-a-birthday/"><span class="guide-meta">Birthdays <b aria-hidden="true">↗</b></span><img src="/assets/savethedate-icon.png" alt="" loading="lazy"><h3>A birthday reminder system that feels personal</h3><p>Keep the dates and details that make it easy to show up for someone.</p><span class="guide-read">Read the guide →</span></a>
+      <a class="guide-card tagshot rv" href="/blog/find-iphone-screenshots/"><span class="guide-meta">Screenshots <b aria-hidden="true">↗</b></span><img src="/assets/tagshot-icon.png" alt="" loading="lazy"><h3>Find an iPhone screenshot when you need it</h3><p>Search the words inside saved images and use labels you will remember.</p><span class="guide-read">Read the guide →</span></a>
+    </div>
+  </div>
+</section>
+
 <div class="bigmark" aria-hidden="true">fneeg</div>
 </main>
 
@@ -630,6 +663,7 @@ footer a:hover{color:var(--ink)}
     <nav aria-label="Footer">
       <a href="https://swyper.fneeg.dev">Swyper</a>
       <a href="https://savethedate.fneeg.dev">savethedate</a>
+      <a href="/blog/">Guides</a>
       <a href="https://apps.apple.com/developer/emrecan-er/id1787888653" target="_blank" rel="noopener">App Store</a>
     </nav>
   </div>

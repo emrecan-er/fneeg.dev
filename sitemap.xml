@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fneeg.dev/</loc></url>
+  <url><loc>https://fneeg.dev/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/clean-up-iphone-photos/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/never-miss-a-birthday/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/find-iphone-screenshots/</loc><lastmod>2026-10-11</lastmod></url>
 </urlset>
