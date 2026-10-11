@@ -202,9 +202,11 @@ h2 em{color:var(--muted)}
 .mq img,.mq svg.art{width:44px;height:44px;border-radius:11px}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* coming soon */
+/* more apps */
 .soon-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .scard{position:relative;padding:30px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--line);overflow:hidden;min-height:440px;display:flex;flex-direction:column}
+.scard-link{cursor:pointer;transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.scard-link:hover,.scard-link:focus-visible{transform:translateY(-6px);border-color:rgba(44,123,229,.65);box-shadow:0 28px 70px -35px rgba(44,123,229,.8)}
 .scard::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background:radial-gradient(80% 60% at 100% 0%,var(--c),transparent 70%)}
 .scard .top{display:flex;align-items:center;gap:14px}
 .scard .top .art{width:56px;height:56px;border-radius:13px;box-shadow:0 10px 24px rgba(0,0,0,.4)}
@@ -317,7 +319,7 @@ footer a:hover{color:var(--ink)}
     <a class="logo" href="/" aria-label="fneeg home"><svg><use href="#mark"/></svg>fneeg</a>
     <nav class="links" aria-label="Sections">
       <a href="#apps">Apps</a>
-      <a href="#soon">In the works</a>
+      <a href="#more">More apps</a>
       <a href="#about">About</a>
     </nav>
     <a class="navbtn" href="https://apps.apple.com/developer/emrecan-er/id1787888653" target="_blank" rel="noopener"><svg class="i if"><use href="#apple"/></svg>App Store</a>
@@ -330,9 +332,9 @@ footer a:hover{color:var(--ink)}
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="spot" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="eyebrow"><span class="pulse"></span><b>2 apps live</b> · 2 in the works</span>
+    <span class="eyebrow"><span class="pulse"></span><b>3 apps live</b> · 1 in the works</span>
     <h1 id="headline" aria-label="Tiny apps, carefully made."><span class="w">Tiny</span> <span class="w">apps,</span><br><em class="w">carefully</em> <span class="w">made.</span></h1>
-    <p class="lede"><b>fneeg</b> is a one-person iOS studio by Emrecan Er. Apps that clean up your camera roll, remember birthdays, and soon find that one screenshot.</p>
+    <p class="lede"><b>fneeg</b> is a one-person iOS studio by Emrecan Er. Apps that clean up your camera roll, remember birthdays, and find that one screenshot.</p>
 
     <div class="dock-wrap">
       <nav class="dock" id="dock" aria-label="Apps">
@@ -345,11 +347,11 @@ footer a:hover{color:var(--ink)}
           <span class="ico"><img src="/assets/savethedate-icon.png" alt="savethedate"></span><span class="dot"></span>
         </a>
         <span class="sep"></span>
-        <a class="app soon" href="#soon" data-name="Tagshot">
-          <span class="tip">Tagshot<small>Coming soon</small></span>
-          <span class="ico"><img src="/assets/tagshot-soon.svg" alt="Tagshot"></span><span class="ribbon">Soon</span>
+        <a class="app" href="https://tagshot.fneeg.dev" data-name="Tagshot">
+          <span class="tip">Tagshot<small>Screenshot Organizer</small></span>
+          <span class="ico"><img src="/assets/tagshot-icon.png" alt="Tagshot"></span><span class="dot"></span>
         </a>
-        <a class="app soon" href="#soon" data-name="RepLedger">
+        <a class="app soon" href="#more" data-name="RepLedger">
           <span class="tip">RepLedger<small>Coming soon</small></span>
           <span class="ico"><img src="/assets/repledger-soon.svg" alt="RepLedger"></span><span class="ribbon">Soon</span>
         </a>
@@ -363,7 +365,7 @@ footer a:hover{color:var(--ink)}
 <section class="sec" id="apps">
   <div class="wrap">
     <div class="head rv">
-      <div><span class="kicker">On the App Store</span><h2>Two apps, <em>live.</em></h2></div>
+      <div><span class="kicker">On the App Store</span><h2>Apps, <em>live.</em></h2></div>
       <p>Each one does one job, does it well, and stays out of your way. Tap a card to explore.</p>
     </div>
 
@@ -418,21 +420,21 @@ footer a:hover{color:var(--ink)}
 
 <div class="marquee" aria-hidden="true">
   <div class="mq">
-    <span><img src="/assets/swyper-icon.png" alt="">Swyper <em>clean camera roll</em> <img src="/assets/savethedate-icon.png" alt="">savethedate <em>never forget</em> <img src="/assets/tagshot-soon.svg" alt="">Tagshot <em>find it fast</em> <img src="/assets/repledger-soon.svg" alt="">RepLedger <em>show up</em></span>
-    <span><img src="/assets/swyper-icon.png" alt="">Swyper <em>clean camera roll</em> <img src="/assets/savethedate-icon.png" alt="">savethedate <em>never forget</em> <img src="/assets/tagshot-soon.svg" alt="">Tagshot <em>find it fast</em> <img src="/assets/repledger-soon.svg" alt="">RepLedger <em>show up</em></span>
+    <span><img src="/assets/swyper-icon.png" alt="">Swyper <em>clean camera roll</em> <img src="/assets/savethedate-icon.png" alt="">savethedate <em>never forget</em> <img src="/assets/tagshot-icon.png" alt="">Tagshot <em>find it fast</em> <img src="/assets/repledger-soon.svg" alt="">RepLedger <em>show up</em></span>
+    <span><img src="/assets/swyper-icon.png" alt="">Swyper <em>clean camera roll</em> <img src="/assets/savethedate-icon.png" alt="">savethedate <em>never forget</em> <img src="/assets/tagshot-icon.png" alt="">Tagshot <em>find it fast</em> <img src="/assets/repledger-soon.svg" alt="">RepLedger <em>show up</em></span>
   </div>
 </div>
 
-<!-- ============ COMING SOON ============ -->
-<section class="sec" id="soon">
+<!-- ============ MORE APPS ============ -->
+<section class="sec" id="more">
   <div class="wrap">
     <div class="head rv">
-      <div><span class="kicker">In the works</span><h2>Coming <em>soon.</em></h2></div>
-      <p>Two more apps are on the bench. Here's a sneak peek.</p>
+      <div><span class="kicker">More from fneeg</span><h2>Built with <em>care.</em></h2></div>
+      <p>Tagshot is live. RepLedger is on the bench. Tap a card to learn more.</p>
     </div>
     <div class="soon-grid">
-      <article class="scard rv" style="--c:#8B7CFF">
-        <div class="top"><img class="art" src="/assets/tagshot-soon.svg" alt=""><div><h3>Tagshot</h3><p class="sub">Screenshot Organizer</p></div><span class="badge"><i></i>In development</span></div>
+      <a class="scard scard-link rv" href="https://tagshot.fneeg.dev" aria-label="Explore Tagshot: Screenshot Organizer" style="--c:#2C7BE5">
+        <div class="top"><img class="art" src="/assets/tagshot-icon.png" alt=""><div><h3>Tagshot</h3><p class="sub">Screenshot Organizer</p></div><span class="badge"><i></i>Available now</span></div>
         <p class="blurb">Your screenshots, auto-labeled on your iPhone. Receipts, recipes, tickets, memes: search a word and the right one is already there.</p>
         <div class="demo" aria-hidden="true">
           <div class="t-search"><svg class="i"><use href="#search"/></svg><span class="typed" id="typed"></span><span class="caret"></span></div>
@@ -447,7 +449,7 @@ footer a:hover{color:var(--ink)}
             <div class="t-shot" data-tag="Map"><i class="blk"></i><i class="blk"></i><span class="chip">Map</span></div>
           </div>
         </div>
-      </article>
+      </a>
 
       <article class="scard rv" style="--c:#FF8A3D">
         <div class="top"><img class="art" src="/assets/repledger-soon.svg" alt=""><div><h3>RepLedger</h3><p class="sub">Gym tracker</p></div><span class="badge"><i></i>In development</span></div>
