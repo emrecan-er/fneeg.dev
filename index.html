@@ -317,6 +317,10 @@ h2 em{color:var(--muted)}
 @keyframes client-float{50%{translate:0 -10px;rotate:-4deg}}
 .client-title{display:block;max-width:65%;margin-top:94px;font-size:clamp(30px,3.4vw,42px);line-height:1.05;font-weight:700;letter-spacing:-.05em}
 .client-subtitle{display:block;margin-top:8px;font-size:14px;color:var(--accent)}
+.client-rating{display:flex;align-items:center;gap:7px;width:max-content;max-width:100%;margin-top:16px;padding:8px 11px;border:1px solid var(--line-2);border-radius:999px;background:rgba(255,255,255,.04);font-size:13px;color:var(--ink)}
+.client-rating .star{font-size:16px;line-height:1;color:var(--accent)}
+.client-rating strong{font-weight:600}
+.client-rating small{font-size:12px;color:var(--muted)}
 .client-desc{display:block;max-width:25rem;margin-top:18px;color:var(--muted);font-size:14px;line-height:1.55}
 .client-bottom{margin-top:auto;padding-top:25px;font-size:13px;font-weight:600;color:var(--ink)}
 .client-bottom .i{transition:transform .3s var(--ease)}
@@ -600,6 +604,7 @@ footer a:hover{color:var(--ink)}
           <span class="client-top"><span>Freelance · Android</span><svg class="i"><use href="#arrow"/></svg></span>
           <span class="client-icon"><img src="/assets/sorucoz-icon.png" alt="" loading="lazy"></span>
           <span class="client-title">SoruÇöz</span><span class="client-subtitle">LGS preparation</span>
+          <span class="client-rating" aria-label="Rated 4.2 out of 5 from 691 ratings on Google Play, checked October 2026"><span class="star" aria-hidden="true">★</span><strong>4.2</strong><small>· 691 ratings</small></span>
           <span class="client-desc">Live lessons, nationwide practice exams, and a community to help students solve the questions that stop them.</span>
           <span class="client-bottom">View on Google Play <svg class="i"><use href="#arrow"/></svg></span>
         </a>
@@ -607,6 +612,7 @@ footer a:hover{color:var(--ink)}
           <span class="client-top"><span>Freelance · Android</span><svg class="i"><use href="#arrow"/></svg></span>
           <span class="client-icon"><img src="/assets/paragraf-delisi-icon.png" alt="" loading="lazy"></span>
           <span class="client-title">Paragraf Delisi</span><span class="client-subtitle">Reading and verbal logic practice</span>
+          <span class="client-rating" aria-label="Rated 4.2 out of 5 from 257 ratings on Google Play, checked October 2026"><span class="star" aria-hidden="true">★</span><strong>4.2</strong><small>· 257 ratings</small></span>
           <span class="client-desc">Focused, offline exercises that help middle school students build reading speed and prepare for the LGS.</span>
           <span class="client-bottom">View on Google Play <svg class="i"><use href="#arrow"/></svg></span>
         </a>
