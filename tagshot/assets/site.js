@@ -3,7 +3,7 @@
 //   const APP_STORE_URL = "https://apps.apple.com/app/id6742912345";
 // Every download button on the site switches from "Coming soon" to a real link.
 // ─────────────────────────────────────────────────────────────
-const APP_STORE_URL = "https://apps.apple.com/us/app/tagshot-organize-screenshots/id6819395180";
+const APP_STORE_URL = "";
 
 document.querySelectorAll("[data-store]").forEach((button) => {
   const top = button.querySelector("small");
