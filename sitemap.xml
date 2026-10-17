@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fneeg.dev/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://fneeg.dev/blog/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://fneeg.dev/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/swyper/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/savethedate/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/tagshot/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/tagshot/privacy/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/tagshot/support/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/</loc><lastmod>2026-10-17</lastmod></url>
   <url><loc>https://fneeg.dev/blog/siri-ai-ios-27/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://fneeg.dev/blog/iphone-18-pro-variable-aperture/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://fneeg.dev/blog/ios-27-screen-time/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://fneeg.dev/blog/clean-up-iphone-photos/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://fneeg.dev/blog/never-miss-a-birthday/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://fneeg.dev/blog/find-iphone-screenshots/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/merge-duplicate-iphone-photos/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/organize-iphone-screenshots/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://fneeg.dev/blog/birthday-reminders-iphone/</loc><lastmod>2026-10-17</lastmod></url>
 </urlset>

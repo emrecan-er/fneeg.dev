@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>savethedate — Never miss a birthday</title>
+<meta name="description" content="savethedate keeps every birthday that matters in one place: countdowns, memory cards, message ideas and reminders before the day. Free on iPhone and iPad.">
+<link rel="canonical" href="https://fneeg.dev/savethedate/">
+<meta property="og:url" content="https://fneeg.dev/savethedate/">
+<meta name="theme-color" content="#F7F2E6">
+<meta name="color-scheme" content="light">
+<meta name="apple-itunes-app" content="app-id=6788736709">
+<link rel="icon" type="image/png" href="/savethedate/assets/favicon-64.png">
+<link rel="apple-touch-icon" href="/savethedate/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="savethedate — Never miss a birthday">
+<meta property="og:description" content="Birthday countdowns, memory cards, message ideas and reminders. Free on the App Store.">
+<meta property="og:image" content="https://fneeg.dev/savethedate/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/savethedate/assets/lexend-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/savethedate/assets/serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Lexend;src:url(/savethedate/assets/lexend-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Lexend;src:url(/savethedate/assets/lexend-medium.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Lexend;src:url(/savethedate/assets/lexend-semibold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:Lexend;src:url(/savethedate/assets/lexend-bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:Serif;src:url(/savethedate/assets/serif-italic.woff2) format("woff2");font-style:italic;font-display:swap}
+:root{
+  --cream:#F7F2E6;--paper:#FFFDF8;--sage:#98C29E;--sage-2:#CFE3D1;--sage-d:#4F7D5A;--pink:#E9A8AE;--pink-2:#F7DADC;--pink-d:#C0646E;--sun:#F2C46B;
+  --ink:#24352B;--muted:#5E7466;--faint:#8C9C91;--line:rgba(36,53,43,.1);
+  --gutter:clamp(16px,4vw,40px);--ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--cream);color:var(--ink);font-family:Lexend,system-ui,-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.if{fill:currentColor;stroke:none}
+em{font-family:Serif,Georgia,serif;font-style:italic;font-weight:400}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;padding:calc(env(safe-area-inset-top) + 14px) 0 14px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(247,242,230,.8);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--muted)}
+.back:hover{color:var(--ink)}
+.back .i{transform:rotate(180deg);font-size:15px}
+.crumb{color:var(--faint)}
+.brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.navlinks{display:flex;gap:24px;margin-left:auto;font-size:14px;color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+.navcta{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:14px;font-weight:600}
+.navcta .i{font-size:15px}
+@media (max-width:820px){.navlinks{display:none}.navcta{margin-left:auto}}
+@media (max-width:420px){.brand span{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:130px 0 90px;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 70% at 85% 40%,var(--sage-2),transparent 70%),radial-gradient(40% 50% at 10% 90%,var(--pink-2),transparent 70%)}
+.confetti{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:8px;height:14px;border-radius:2px;opacity:.85;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0)}100%{transform:translateY(110vh) rotate(540deg)}}
+.hgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
+.eyebrow img{width:52px;height:52px;border-radius:12px;box-shadow:0 10px 24px -8px rgba(36,53,43,.35)}
+.eyebrow b{display:block;color:var(--ink);font-weight:600;font-size:15px}
+h1{margin-top:26px;font-size:clamp(48px,8vw,96px);line-height:.95;letter-spacing:-.05em;font-weight:700}
+h1 em{color:var(--pink-d);letter-spacing:-.02em;font-size:1.06em}
+h1 .u{position:relative;display:inline-block}
+h1 .u svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.3em;overflow:visible}
+h1 .u path{stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.2s .7s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.lede{margin-top:22px;font-size:clamp(16px,1.9vw,19px);color:var(--muted);max-width:30rem}
+.ctas{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px;margin-top:30px}
+.store{display:inline-flex;align-items:center;gap:12px;height:60px;padding:0 26px 0 20px;border-radius:16px;background:#000;color:#fff;box-shadow:0 14px 30px -10px rgba(0,0,0,.35);transition:transform .15s}
+.store:hover{transform:translateY(-2px)}
+.store svg{width:26px;height:26px;margin-top:-3px}
+.store span{display:flex;flex-direction:column;line-height:1.05}
+.store small{font-size:12px;font-weight:500}
+.store strong{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.helper{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
+.helper .i{color:var(--sage-d);font-size:16px}
+.rise{opacity:0;transform:translateY(16px);animation:rise .9s var(--ease) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* hero visual */
+.vis{position:relative;height:620px}
+.vshot{position:absolute;width:250px;aspect-ratio:1242/2688;border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#fff,var(--pink-2));box-shadow:0 40px 70px -30px rgba(36,53,43,.5),0 0 0 1px rgba(36,53,43,.06);transition:transform .8s var(--ease)}
+.vshot img{width:100%;height:100%;object-fit:cover}
+.vshot.v1{left:4%;top:60px;transform:rotate(-9deg);z-index:1}
+.vshot.v2{left:50%;top:10px;margin-left:-125px;z-index:3}
+.vshot.v3{right:2%;top:70px;transform:rotate(9deg);z-index:2}
+.vis:hover .v1{transform:rotate(-13deg) translateX(-14px)}
+.vis:hover .v3{transform:rotate(13deg) translateX(14px)}
+.vis:hover .v2{transform:translateY(-10px)}
+.ring{position:absolute;z-index:5;left:-4%;bottom:40px;display:flex;align-items:center;gap:14px;padding:14px 20px 14px 14px;border-radius:22px;background:var(--paper);box-shadow:0 24px 50px -18px rgba(36,53,43,.4);animation:bob 6s ease-in-out infinite}
+.ring svg{width:58px;height:58px;transform:rotate(-90deg)}
+.ring .num{position:absolute;left:14px;top:14px;width:58px;height:58px;display:grid;place-items:center;font-weight:700;font-size:19px;font-variant-numeric:tabular-nums}
+.ring b{display:block;font-size:15px;font-weight:600}
+.ring small{display:block;font-size:12.5px;color:var(--muted)}
+.bal{position:absolute;z-index:6;animation:float 7s ease-in-out infinite}
+.bal.b1{right:-10px;bottom:120px;width:56px}
+.bal.b2{left:40%;top:-24px;width:40px;animation-delay:-3s;animation-duration:8s}
+.bal.b3{left:-20px;top:120px;width:34px;animation-delay:-5s;animation-duration:9s}
+@keyframes float{0%,100%{transform:translate(0,0) rotate(-5deg)}50%{transform:translate(8px,-20px) rotate(5deg)}}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@media (max-width:900px){
+  .hgrid{grid-template-columns:1fr}
+  .vis{height:520px;max-width:520px;margin:10px auto 0;width:100%}
+  .vshot{width:200px}.vshot.v2{margin-left:-100px}
+  .ring{left:0}
+}
+@media (max-width:480px){
+  .vis{height:430px}
+  .vshot{width:160px;border-radius:22px}.vshot.v2{margin-left:-80px}
+  .vshot.v1{left:0}.vshot.v3{right:0}
+  .ring{bottom:0}
+  .ctas .store{flex:1 1 100%;justify-content:center}
+}
+
+/* sections */
+.sec{padding:clamp(80px,11vw,130px) 0}
+.kicker{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-d);margin-bottom:12px}
+h2{font-size:clamp(34px,5.4vw,60px);line-height:1.02;letter-spacing:-.04em;font-weight:700;max-width:16ch}
+h2 em{color:var(--pink-d)}
+.sub{margin-top:14px;font-size:clamp(16px,1.8vw,18px);color:var(--muted);max-width:34rem}
+
+/* interactive list */
+.demo{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+.panel{padding:22px;border-radius:28px;background:var(--paper);box-shadow:0 30px 60px -30px rgba(36,53,43,.35),0 0 0 1px var(--line)}
+.seg{display:flex;padding:4px;border-radius:14px;background:var(--cream);gap:4px}
+.seg button{flex:1;height:36px;border-radius:10px;font-size:13.5px;font-weight:500;color:var(--muted);transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 2px 8px rgba(36,53,43,.1)}
+.list{position:relative;margin-top:14px;list-style:none}
+.person{display:flex;align-items:center;gap:14px;padding:12px;border-radius:18px;transition:background .2s}
+.person:hover{background:var(--cream)}
+.av{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:700;font-size:16px;flex:none}
+.pinfo{flex:1;min-width:0}
+.pinfo b{display:block;font-weight:600;font-size:15.5px}
+.pinfo small{display:block;font-size:12.5px;color:var(--muted)}
+.bar{margin-top:7px;height:5px;border-radius:3px;background:var(--cream);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--sage);width:0;transition:width 1.2s var(--ease)}
+.dleft{text-align:right;flex:none}
+.dleft b{display:block;font-size:22px;font-weight:700;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.dleft small{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
+.person.soon .dleft b{color:var(--pink-d)}
+.person.soon .bar i{background:var(--pink)}
+@media (max-width:900px){.demo{grid-template-columns:1fr;gap:36px}}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.f{padding:28px;border-radius:26px;background:var(--paper);box-shadow:0 0 0 1px var(--line);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.f:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 0 0 1px var(--line),0 24px 50px -24px rgba(36,53,43,.35)}
+.f .ic{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;margin-bottom:22px}
+.f .ic .i{font-size:24px}
+.f h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.f p{margin-top:8px;font-size:15px;color:var(--muted)}
+.f.big{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;background:linear-gradient(135deg,var(--pink-2),var(--paper) 70%)}
+.cards{position:relative;height:200px}
+.mc{position:absolute;width:150px;height:190px;border-radius:20px;background:var(--paper);box-shadow:0 18px 36px -16px rgba(36,53,43,.35),0 0 0 1px var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:12.5px;color:var(--muted);transition:transform .6s var(--ease)}
+.mc svg{width:64px;height:64px}
+.mc.m1{left:6%;top:6px;transform:rotate(-8deg)}
+.mc.m2{left:34%;top:0;z-index:2}
+.mc.m3{left:62%;top:10px;transform:rotate(8deg)}
+.f.big:hover .m1{transform:rotate(-12deg) translateX(-8px)}
+.f.big:hover .m3{transform:rotate(12deg) translateX(8px)}
+@media (max-width:960px){.feat{grid-template-columns:1fr 1fr}.f.big{grid-column:1/-1}}
+@media (max-width:620px){.feat{grid-template-columns:1fr}.f.big{grid-template-columns:1fr}.mc{width:120px;height:160px}.mc.m1{left:0}.mc.m2{left:calc(50% - 60px)}.mc.m3{left:auto;right:0}}
+
+.f.wide{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:linear-gradient(135deg,var(--paper) 40%,var(--sage-2))}
+.notifs{display:flex;flex-direction:column;gap:10px}
+.nt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:20px;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 14px 30px -18px rgba(36,53,43,.4),0 0 0 1px var(--line);animation:slidein .8s var(--ease) both}
+.f.wide:not(.in) .nt{animation-play-state:paused}
+.nt:nth-child(2){animation-delay:.25s;opacity:.85;transform:scale(.97)}
+.nt img{width:38px;height:38px;border-radius:9px;flex:none}
+.nt span{flex:1;min-width:0}
+.nt b{display:block;font-size:13px;font-weight:600}
+.nt small{display:block;font-size:13.5px;color:var(--ink)}
+.nt em{font-family:inherit;font-style:normal;font-size:11.5px;color:var(--faint);align-self:flex-start}
+@keyframes slidein{from{opacity:0;transform:translateY(-14px) scale(.96)}}
+@media (max-width:620px){.f.wide{grid-template-columns:1fr}}
+.gallery{justify-content:safe center}
+/* gallery */
+.gallery{display:flex;gap:18px;margin-top:44px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px var(--gutter) 30px;margin-inline:calc(var(--gutter) * -1);scrollbar-width:none}
+.gallery::-webkit-scrollbar{display:none}
+.gallery figure{flex:none;width:min(280px,70vw);aspect-ratio:1242/2688;border-radius:30px;overflow:hidden;scroll-snap-align:center;background:linear-gradient(160deg,#fff,var(--pink-2));box-shadow:0 30px 50px -28px rgba(36,53,43,.45),0 0 0 1px var(--line)}
+.gallery img{width:100%;height:100%;object-fit:cover}
+
+/* privacy */
+.priv{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:36px;border-radius:32px;background:var(--ink);color:var(--cream)}
+.shield{width:84px;height:84px;border-radius:26px;background:rgba(152,194,158,.18);display:grid;place-items:center;color:var(--sage)}
+.shield .i{font-size:40px}
+.priv h3{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.03em}
+.priv p{margin-top:6px;color:rgba(247,242,230,.7);max-width:34rem}
+.priv .facts{display:flex;flex-direction:column;gap:8px;font-size:14px;color:rgba(247,242,230,.85)}
+.priv .facts span{display:flex;align-items:center;gap:8px}
+.priv .facts .i{color:var(--sage)}
+@media (max-width:820px){.priv{grid-template-columns:1fr;padding:28px}}
+
+/* final */
+.final{text-align:center;padding-bottom:clamp(80px,10vw,120px)}
+.final img{width:110px;height:110px;border-radius:26px;margin:0 auto 26px;box-shadow:0 24px 50px -18px rgba(36,53,43,.5);animation:bob 5s ease-in-out infinite}
+.final h2{margin:0 auto}
+.final .sub{margin:14px auto 0}
+.final .store{margin-top:30px}
+footer{border-top:1px solid var(--line);padding:34px 0 calc(34px + env(safe-area-inset-bottom));font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer nav{display:flex;gap:22px;flex-wrap:wrap}
+footer a:hover{color:var(--ink)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rise,.rv{opacity:1;transform:none}
+  h1 .u path{stroke-dashoffset:0}
+  .confetti{display:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="steps" viewBox="0 0 24 24"><path d="M4 6h3M4 12h3M4 18h3M10 6h10M10 12h10M10 18h6"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4h0A1.5 1.5 0 0 1 4 14.5Z"/><path d="M8 8h8M8 11.5h5"/></symbol>
+  <symbol id="bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16ZM10 20.5a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.5 7 10 4-1.5 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="balloon" viewBox="0 0 40 70"><path d="M20 2C9 2 3 11 3 21c0 12 9 21 17 23 8-2 17-11 17-23C37 11 31 2 20 2Z"/><path d="M17 44h6l-3 4z"/><ellipse cx="13" cy="15" rx="3" ry="6" fill="#fff" opacity=".45" transform="rotate(-20 13 15)"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="back" href="https://fneeg.dev" aria-label="Back to fneeg"><svg class="i"><use href="#arrow"/></svg>fneeg</a>
+    <span class="crumb">/</span>
+    <a class="brand" href="#top"><img src="/savethedate/assets/icon-192.png" alt="" width="30" height="30"><span>savethedate</span></a>
+    <nav class="navlinks" aria-label="Sections"><a href="#list">How it works</a><a href="#features">Features</a><a href="#privacy">Privacy</a></nav>
+    <a class="navcta" href="https://apps.apple.com/app/id6788736709" target="_blank" rel="noopener"><svg class="i if"><use href="#apple"/></svg>Get the app</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <div class="wrap hgrid">
+    <div>
+      <div class="eyebrow rise" style="animation-delay:.05s"><img src="/savethedate/assets/icon-512.png" alt="savethedate app icon" width="52" height="52"><span><b>savethedate : birthday</b>Free for iPhone &amp; iPad</span></div>
+      <h1 class="rise" style="animation-delay:.15s">Never miss a <span class="u"><em>birthday</em><svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 4, 120 4, 197 12" fill="none" stroke="#E9A8AE" stroke-width="6" stroke-linecap="round"/></svg></span> again.</h1>
+      <p class="lede rise" style="animation-delay:.3s">Countdowns for the people you love, personal memory cards, message ideas and a gentle reminder before the day.</p>
+      <div class="ctas rise" style="animation-delay:.45s">
+        <a class="store" href="https://apps.apple.com/app/id6788736709" target="_blank" rel="noopener" aria-label="Download savethedate on the App Store"><svg class="if" fill="currentColor"><use href="#apple"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+        <span class="helper"><svg class="i"><use href="#shield"/></svg>Free · Data not collected</span>
+      </div>
+    </div>
+
+    <div class="vis rise" style="animation-delay:.35s" aria-hidden="true">
+      <div class="vshot v1"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ac/3a/3f/ac3a3f27-bf10-b730-e450-7b4dc87de524/birthday_reminder_appstore_2_1242x2688.png/600x1300bb.jpg" alt="" referrerpolicy="no-referrer"></div>
+      <div class="vshot v3"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/af/94/84af94db-4c63-fd27-5eee-c9db61798253/birthday_reminder_appstore_4_1242x2688.png/600x1300bb.jpg" alt="" referrerpolicy="no-referrer"></div>
+      <div class="vshot v2"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9f/ea/68/9fea683e-1267-9c71-df94-9eb9d22d305a/birthday_reminder_appstore_1_1242x2688.png/600x1300bb.jpg" alt="" referrerpolicy="no-referrer"></div>
+      <div class="ring">
+        <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#F7F2E6" stroke-width="4"/><circle id="arc" cx="18" cy="18" r="15.5" fill="none" stroke="#98C29E" stroke-width="4" stroke-linecap="round" stroke-dasharray="97.4" stroke-dashoffset="97.4" style="transition:stroke-dashoffset .8s cubic-bezier(.2,.7,.2,1),stroke .3s"/></svg>
+        <span class="num" id="ringNum">7</span>
+        <span><b id="ringName">Grandpa</b><small id="ringSub">days to go</small></span>
+      </div>
+      <svg class="bal b1" style="color:#E9A8AE" fill="currentColor"><use href="#balloon"/></svg>
+      <svg class="bal b2" style="color:#98C29E" fill="currentColor"><use href="#balloon"/></svg>
+      <svg class="bal b3" style="color:#F2C46B" fill="currentColor"><use href="#balloon"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="list" style="padding-top:40px">
+  <div class="wrap demo">
+    <div class="rv">
+      <span class="kicker">At a glance</span>
+      <h2>Who's next, and <em>how soon.</em></h2>
+      <p class="sub">See the next birthday the moment you open the app, with days left for everyone else. Sort by date, name or relationship. Try it.</p>
+    </div>
+    <div class="panel rv">
+      <div class="seg" role="group" aria-label="Sort birthdays">
+        <button aria-pressed="true" data-sort="date">Date</button>
+        <button aria-pressed="false" data-sort="name">Name</button>
+        <button aria-pressed="false" data-sort="rel">Relationship</button>
+      </div>
+      <ul class="list" id="people"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv"><span class="kicker">Features</span><h2>Small app, <em>big memory.</em></h2></div>
+    <div class="feat">
+      <article class="f big rv">
+        <div>
+          <div class="ic" style="background:var(--paper)"><svg class="i" style="color:var(--pink-d)"><use href="#heart"/></svg></div>
+          <h3>Memory cards</h3>
+          <p>Give each person their own card: a drawing, a symbol, or the gift idea you'll otherwise forget by next month.</p>
+        </div>
+        <div class="cards" aria-hidden="true">
+          <div class="mc m1"><svg viewBox="0 0 64 64"><path d="M14 44c6-14 12-22 18-22s8 10 14 10 6-8 6-8" fill="none" stroke="#24352B" stroke-width="2.5" stroke-linecap="round"/><circle cx="46" cy="18" r="6" fill="#F2C46B"/></svg>A drawing</div>
+          <div class="mc m2"><svg viewBox="0 0 64 64"><path d="M32 8l6.5 14 15.5 1.8-11.5 10.6 3.2 15.3L32 42l-13.7 7.7 3.2-15.3L10 23.8 25.5 22z" fill="#E9A8AE" stroke="#24352B" stroke-width="2" stroke-linejoin="round"/></svg>A symbol</div>
+          <div class="mc m3"><svg viewBox="0 0 64 64"><rect x="12" y="26" width="40" height="28" rx="4" fill="#98C29E" stroke="#24352B" stroke-width="2"/><rect x="9" y="18" width="46" height="10" rx="3" fill="#CFE3D1" stroke="#24352B" stroke-width="2"/><path d="M32 18v36M32 18c-4-8-14-8-12-2s12 2 12 2c4-8 14-8 12-2s-12 2-12 2" fill="none" stroke="#24352B" stroke-width="2"/></svg>A gift idea</div>
+        </div>
+      </article>
+      <article class="f rv"><div class="ic" style="background:var(--sage-2)"><svg class="i" style="color:var(--sage-d)"><use href="#clock"/></svg></div><h3>Countdowns</h3><p>The next birthday front and center, and days remaining for everyone else.</p></article>
+      <article class="f rv"><div class="ic" style="background:var(--pink-2)"><svg class="i" style="color:var(--pink-d)"><use href="#steps"/></svg></div><h3>Step-by-step setup</h3><p>Adding someone takes a few friendly steps, not a long form.</p></article>
+      <article class="f rv"><div class="ic" style="background:#FBEBC8"><svg class="i" style="color:#A9771A"><use href="#cal"/></svg></div><h3>Birth year optional</h3><p>Know the year? Add it. Don't? The day and month are all it needs.</p></article>
+      <article class="f rv"><div class="ic" style="background:var(--sage-2)"><svg class="i" style="color:var(--sage-d)"><use href="#chat"/></svg></div><h3>Message ideas</h3><p>Suggestions for what to write, so a quick text still feels personal.</p></article>
+      <article class="f wide rv">
+        <div><div class="ic" style="background:var(--pink-2)"><svg class="i" style="color:var(--pink-d)"><use href="#bell"/></svg></div><h3>Reminders</h3><p>A heads-up scheduled before the day, with time to plan something.</p></div>
+        <div class="notifs" aria-hidden="true">
+          <div class="nt"><img src="/savethedate/assets/icon-192.png" alt=""><span><b>savethedate</b><small>Grandpa's birthday is in 3 days. Gift idea saved on his card.</small></span><em>now</em></div>
+          <div class="nt"><img src="/savethedate/assets/icon-192.png" alt=""><span><b>savethedate</b><small>Tomorrow: Alex turns 30 🎉</small></span><em>9:00</em></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="gallery rv" aria-label="App screenshots">
+      <figure><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9f/ea/68/9fea683e-1267-9c71-df94-9eb9d22d305a/birthday_reminder_appstore_1_1242x2688.png/600x1300bb.jpg" alt="Home screen with the next birthday and upcoming list" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <figure><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ac/3a/3f/ac3a3f27-bf10-b730-e450-7b4dc87de524/birthday_reminder_appstore_2_1242x2688.png/600x1300bb.jpg" alt="A person's birthday page with countdown and message ideas" loading="lazy" referrerpolicy="no-referrer"></figure>
+      <figure><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/af/94/84af94db-4c63-fd27-5eee-c9db61798253/birthday_reminder_appstore_4_1242x2688.png/600x1300bb.jpg" alt="Memory card screen" loading="lazy" referrerpolicy="no-referrer"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="privacy" style="padding-top:0">
+  <div class="wrap">
+    <div class="priv rv">
+      <div class="shield"><svg class="i"><use href="#shield"/></svg></div>
+      <div><h3>Data not collected.</h3><p>The birthdays you save are yours. savethedate's App Store privacy label states that the app doesn't collect any data.</p></div>
+      <div class="facts"><span><svg class="i"><use href="#check"/></svg>Free to download</span><span><svg class="i"><use href="#check"/></svg>iPhone &amp; iPad, iOS 15.1+</span><span><svg class="i"><use href="#check"/></svg>Rated 4+</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap rv">
+    <img src="/savethedate/assets/icon-512.png" alt="savethedate app icon" width="110" height="110" loading="lazy">
+    <h2>Be the one who <em>remembered.</em></h2>
+    <p class="sub">Add your people once. savethedate does the remembering.</p>
+    <a class="store" href="https://apps.apple.com/app/id6788736709" target="_blank" rel="noopener" aria-label="Download savethedate on the App Store"><svg class="if" fill="currentColor"><use href="#apple"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 fneeg · Emrecan Er</span>
+    <nav><a href="https://fneeg.dev">More apps by fneeg</a><a href="/swyper/">Swyper</a><a href="https://apps.apple.com/app/id6788736709" target="_blank" rel="noopener">App Store</a></nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('solid', scrollY > 30);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Confetti
+  if (!reduce) {
+    const cf = document.getElementById('confetti'), cols = ['#98C29E', '#E9A8AE', '#F2C46B', '#CFE3D1', '#C0646E'];
+    for (let i = 0; i < 26; i++) {
+      const p = document.createElement('i');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.background = cols[i % cols.length];
+      p.style.animationDuration = (9 + Math.random() * 9) + 's';
+      p.style.animationDelay = (-Math.random() * 18) + 's';
+      p.style.width = (6 + Math.random() * 5) + 'px';
+      if (i % 3 === 0) p.style.borderRadius = '50%', p.style.height = p.style.width;
+      cf.appendChild(p);
+    }
+  }
+
+  // Countdown ring cycles through people
+  const RING = [['Grandpa', 7, 'days to go'], ['Alex', 2, 'days to go'], ['Mom', 0, "It's today!"], ['Zeynep', 23, 'days to go']];
+  const arc = document.getElementById('arc'), num = document.getElementById('ringNum'), rn = document.getElementById('ringName'), rs = document.getElementById('ringSub');
+  let ri = 0;
+  const showRing = () => {
+    const [n, d, s] = RING[ri % RING.length];
+    rn.textContent = n; rs.textContent = s; num.textContent = d === 0 ? '🎂' : d;
+    arc.style.stroke = d <= 3 ? '#E9A8AE' : '#98C29E';
+    arc.style.strokeDashoffset = 97.4 * (d / 30);
+    ri++;
+  };
+  setTimeout(showRing, 600);
+  if (!reduce) setInterval(showRing, 2600);
+
+  // Sortable birthday list (FLIP animation)
+  const today = new Date();
+  const P = [
+    { n: 'Mom', r: 'Family', ro: 0, m: 0, d: 4, c: ['#F7DADC', '#C0646E'] },
+    { n: 'Alex', r: 'Friend', ro: 1, m: 0, d: 13, c: ['#CFE3D1', '#4F7D5A'] },
+    { n: 'Grandpa', r: 'Family', ro: 0, m: 1, d: 2, c: ['#FBEBC8', '#A9771A'] },
+    { n: 'Deniz', r: 'Colleague', ro: 2, m: 2, d: 19, c: ['#E3E0F5', '#5B4FB0'] },
+    { n: 'Zeynep', r: 'Friend', ro: 1, m: 4, d: 8, c: ['#F7DADC', '#C0646E'] },
+  ].map(p => {
+    const t = new Date(today.getFullYear(), today.getMonth() + p.m, today.getDate() + p.d);
+    const days = Math.round((t - new Date(today.getFullYear(), today.getMonth(), today.getDate())) / 864e5);
+    return { ...p, days, date: t.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }) };
+  });
+  const ul = document.getElementById('people');
+  P.forEach(p => {
+    const li = document.createElement('li');
+    li.className = 'person' + (p.days <= 7 ? ' soon' : ''); li.dataset.n = p.n;
+    li.innerHTML = `<span class="av" style="background:${p.c[0]};color:${p.c[1]}">${p.n[0]}</span>
+      <span class="pinfo"><b>${p.n}</b><small>${p.date} · ${p.r}</small><span class="bar"><i data-w="${Math.max(6, 100 - p.days / 3.65)}"></i></span></span>
+      <span class="dleft"><b>${p.days}</b><small>days</small></span>`;
+    ul.appendChild(li);
+    p.el = li;
+  });
+  const sorters = { date: (a, b) => a.days - b.days, name: (a, b) => a.n.localeCompare(b.n), rel: (a, b) => a.ro - b.ro || a.days - b.days };
+  const sortBy = key => {
+    const first = new Map(P.map(p => [p, p.el.getBoundingClientRect().top]));
+    [...P].sort(sorters[key]).forEach(p => ul.appendChild(p.el));
+    if (reduce) return;
+    P.forEach(p => {
+      const dy = first.get(p) - p.el.getBoundingClientRect().top;
+      if (dy) p.el.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 500, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    });
+  };
+  sortBy('date');
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    sortBy(b.dataset.sort);
+  }));
+
+  // Reveal; fill the progress bars when the list shows up
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    e.target.querySelectorAll('.bar i').forEach((i, k) => setTimeout(() => i.style.width = i.dataset.w + '%', 200 + k * 90));
+  }), { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
